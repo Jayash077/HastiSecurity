@@ -1,0 +1,141 @@
+
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   DESIGN TOKENS (LIGHT)
+========================= */
+:root {
+  /* Fonts */
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+
+  /* Base Colors - HEX format */
+  --color-bg: #fafaf9;
+  --color-bg2: #f5f5f4;
+  --color-bg3: #e7e5e4;
+  --color-card: #ffffff;
+
+  /* Text */
+  --color-foreground: #1c1917;
+  --color-muted: #57534e;
+  --color-cta-text: #1c1917;
+
+  /* Accent System */
+  --color-accent: #ea580c;
+  --color-accent-2: #f97316;
+  --color-accent-soft: #ffedd5;
+  --color-accent-muted: #c2410c;
+  --color-accent-rgb: 234 88 12;
+
+  /* UI */
+  --color-border: #d6d3d1;
+  --color-grid: rgba(28, 25, 23, 0.06);
+  --nav-bg: rgba(250, 250, 249, 0.85);
+  --nav-height: 4rem;
+
+  /* Effects */
+  --hero-glow: rgba(234, 88, 12, 0.14);
+  --card-hover: #f5f5f4;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+.dark {
+  --color-bg: #0c0a09;
+  --color-bg2: #141110;
+  --color-bg3: #1c1917;
+  --color-card: #171412;
+
+  --color-foreground: #fafaf9;
+  --color-muted: #a8a29e;
+
+  --color-border: #292524;
+  --color-grid: rgba(255, 255, 255, 0.04);
+
+  --color-accent: #fb923c;
+  --color-accent-2: #fdba74;
+  --color-accent-soft: #431407;
+  --color-accent-muted: #ea580c;
+  --color-accent-rgb: 251 146 60;
+
+  --nav-bg: rgba(12, 10, 9, 0.88);
+
+  --hero-glow: rgba(251, 146, 60, 0.12);
+  --card-hover: #1c1917;
+}
+
+/* =========================
+   LEAFLET FIX
+========================= */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--color-bg2);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+}
+
+/* =========================
+   BASE STYLES
+========================= */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
+  }
+
+  body {
+    @apply bg-bg text-foreground font-sans antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    background: rgba(234, 88, 12, 0.28);
+    color: var(--color-foreground);
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-accent;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* =========================
+   UTILITIES
+========================= */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .pt-nav {
+    padding-top: var(--nav-height);
+  }
+
+  .scroll-mt-nav {
+    scroll-margin-top: var(--nav-height);
+  }
+}
+
+/* =========================
+   RESPONSIVE NAV HEIGHT
+========================= */
+@media (min-width: 640px) {
+  :root {
+    --nav-height: 4.25rem;
+  }
+}
